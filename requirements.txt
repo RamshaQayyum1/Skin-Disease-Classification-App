@@ -6,4 +6,5 @@ pillow
 matplotlib
 seaborn
 opencv-python
+opencv-python-headless
 
