@@ -37,10 +37,12 @@ def grad_cam(model, img_array, layer_name, pred_index=None):
         
         # Ensure pred_index is valid
         if pred_index is None:
-            pred_index = tf.argmax(predictions[0]).numpy()  # Get the predicted class index
+           pred_index = np.argmax(predictions)
+  # Get the predicted class index
         
         # Specific class output
-        class_output = predictions[0, pred_index]  # Correct indexing
+        class_output = predictions[pred_index]  # No need for [0, pred_index]
+  # Correct indexing
     
     # Backpropagation
     grads = tape.gradient(class_output, conv_outputs)
